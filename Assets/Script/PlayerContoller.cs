@@ -7,15 +7,18 @@ public class PlayerContoller : MonoBehaviour
     public float Speed;
     public float RotationSpeed;
     public GameObject Camera;
+    public float JumpForce;
 
     float pitch;
     float yaw;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         pitch = Camera.transform.localRotation.eulerAngles.x;
         yaw = Camera.transform.localRotation.eulerAngles.y;
+        rb = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -32,6 +35,10 @@ public class PlayerContoller : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.A)) {
             this.transform.position -= this.transform.right * Speed * Time.deltaTime;
+        }
+
+        if(Input.GetKey(KeyCode.Space)) {
+            rb.AddRelativeForce(Vector3.up * JumpForce * Time.deltaTime, ForceMode.Impulse);
         }
 
         float mouseVertical = Input.GetAxis("Mouse Y");

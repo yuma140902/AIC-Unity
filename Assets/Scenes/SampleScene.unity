@@ -253,6 +253,7 @@ MonoBehaviour:
   Speed: 4
   RotationSpeed: 2
   Camera: {fileID: 963194225}
+  JumpForce: 100
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
