@@ -8,10 +8,12 @@ public class PlayerContoller : MonoBehaviour
     public float RotationSpeed;
     public GameObject Camera;
 
+    float pitch;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        pitch = Camera.transform.localRotation.eulerAngles.x;
     }
 
     // Update is called once per frame
@@ -29,5 +31,10 @@ public class PlayerContoller : MonoBehaviour
         if(Input.GetKey(KeyCode.A)) {
             this.transform.position -= this.transform.right * Speed * Time.deltaTime;
         }
+
+        float mouseVertical = Input.GetAxis("Mouse Y");
+        pitch += -mouseVertical * RotationSpeed;
+
+        Camera.transform.localRotation = Quaternion.Euler(pitch, 0, 0);
     }
 }
