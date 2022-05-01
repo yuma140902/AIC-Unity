@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerContoller : MonoBehaviour
 {
     public float Speed;
+    public float RotationSpeed;
+    public GameObject Camera;
 
     // Start is called before the first frame update
     void Start()
