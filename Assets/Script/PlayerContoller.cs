@@ -8,6 +8,7 @@ public class PlayerContoller : MonoBehaviour
     public float RotationSpeed;
     public GameObject Camera;
     public float JumpForce;
+    public float KickForce;
 
     float pitch;
     float yaw;
@@ -58,5 +59,9 @@ public class PlayerContoller : MonoBehaviour
 
     void OnCollisionEnter(Collision other) {
         onGround = true;
+        if (other.gameObject.tag == "ball") {
+            Vector3 kickVector = -other.contacts[0].normal.normalized * KickForce;
+            other.rigidbody.AddForce(kickVector, ForceMode.Impulse);
+        }
     }
 }
