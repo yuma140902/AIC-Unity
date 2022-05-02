@@ -12,6 +12,7 @@ public class PlayerContoller : MonoBehaviour
     float pitch;
     float yaw;
     Rigidbody rb;
+    bool onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -37,8 +38,9 @@ public class PlayerContoller : MonoBehaviour
             this.transform.position -= this.transform.right * Speed * Time.deltaTime;
         }
 
-        if(Input.GetKey(KeyCode.Space)) {
-            rb.AddRelativeForce(Vector3.up * JumpForce * Time.deltaTime, ForceMode.Impulse);
+        if(onGround && Input.GetKeyDown(KeyCode.Space)) {
+            rb.AddRelativeForce(Vector3.up * JumpForce, ForceMode.Impulse);
+            onGround = false;
         }
 
         float mouseVertical = Input.GetAxis("Mouse Y");
@@ -52,5 +54,9 @@ public class PlayerContoller : MonoBehaviour
         this.transform.localRotation = Quaternion.Euler(0, yaw, 0);
 
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void OnCollisionEnter(Collision other) {
+        onGround = true;
     }
 }
