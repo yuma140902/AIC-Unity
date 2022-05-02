@@ -61,6 +61,7 @@ public class PlayerContoller : MonoBehaviour
         onGround = true;
         if (other.gameObject.tag == "ball") {
             Vector3 kickVector = -other.contacts[0].normal.normalized * KickForce;
+            kickVector += Vector3.up * KickForce;
             other.rigidbody.AddForce(kickVector, ForceMode.Impulse);
         }
     }

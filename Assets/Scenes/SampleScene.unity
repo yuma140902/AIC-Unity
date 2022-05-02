@@ -254,7 +254,7 @@ MonoBehaviour:
   RotationSpeed: 2
   Camera: {fileID: 963194225}
   JumpForce: 10
-  KickForce: 10
+  KickForce: 5
 --- !u!1 &264489201
 GameObject:
   m_ObjectHideFlags: 0
