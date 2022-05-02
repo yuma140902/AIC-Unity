@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GoalScript : MonoBehaviour
 {
+    public GameObject ClearText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,9 @@ public class GoalScript : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "ball") {
-
+            ClearText.SetActive(true);
         }
     }
 }

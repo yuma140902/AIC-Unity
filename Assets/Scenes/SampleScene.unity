@@ -992,3 +992,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c457462e251864b9c00c21fde72ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ClearText: {fileID: 972219682}
